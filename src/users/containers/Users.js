@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import UsersList from "./UsersList";
+import UsersList from "../components/UsersList";
 
-class UsersContainer extends Component {
+class Users extends Component {
   state = {
     users: []
   };
@@ -23,4 +23,4 @@ class UsersContainer extends Component {
   }
 }
 
-export default UsersContainer;
+export default Users;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import PostsList from "./PostsList";
+import PostsList from "../components/PostsList";
 
-class PostsContainer extends Component {
+class Posts extends Component {
   state = {
     posts: []
   };
@@ -23,4 +23,4 @@ class PostsContainer extends Component {
   }
 }
 
-export default PostsContainer;
+export default Posts;
