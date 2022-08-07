@@ -16,7 +16,7 @@ class CounterContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    counterValue: state.count
+    counterValue: state.counter.count
   };
 }
 
