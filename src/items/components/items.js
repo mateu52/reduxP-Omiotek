@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect, connnect } from 'react-redux';
-import { fetchData, selectUsers, addUser } from '../reducer';
+import { getUsers, selectUsers, addUser } from '../reducer';
 import ItemsLists from './ItemsLists';
 
-function Items({ numValue, addData, addUser }){
+function Items({ numValue, addData, addUSR }){
     console.log(numValue)
-    console.log(addUser)
 
     return(
         <div className="container">
             <h4>open list</h4>
-            <button onClick={() => addData()}>add 1</button>
+            <button onClick={() => addData()}>add list</button>
+            <button onClick={() => addUSR()}>add 1</button>
             
             <ItemsLists items={numValue} /> 
         </div>
@@ -24,8 +24,8 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
     return{
-        addData: () => dispatch(fetchData()),
-        addUser: () => dispatch(addUser())
+        addData: () => dispatch(getUsers()),
+        addUSR: () => dispatch(addUser()),
     };
 }
 

@@ -1,4 +1,6 @@
 
+
+
 const REQ = 'REQ';
 const SUC = 'SUC';
 const FAIL = 'FAIL';
@@ -8,11 +10,35 @@ const ADD = 'ADD';
 export const request = () => ({ type: REQ })
 export const succed = data => ({ type: SUC, payload: data })
 export const failed = () => ({ type: FAIL })
-export const add = user => ({ type: ADD, payload: user })
+export const add = data => ({ type: ADD, payload: data })
 
 
 const initialState = {
     x: []
+}
+export const fetchUsers = (userCount = 10) => {
+    return fetch(`https://randomuser.me/api/?results=${userCount}`)
+        .then((response) => response.json());
+}
+export const getUsers = () => (dispatch) => {
+    dispatch(request());
+    fetchUsers()
+        .then((data) => {
+            dispatch(succed(data.results))
+        })
+        .catch(error => {
+            dispatch(failed())
+        })
+}
+export const addUser = () => (dispatch) => {
+    dispatch(request());
+    fetchUsers(1)
+        .then((data) => {
+            dispatch(add(data.results[0]))
+        })
+        .catch(error => {
+            dispatch(failed())
+        })
 }
 export const fetchData = (valueNum=3) => {
     return function(dispatch){
@@ -27,19 +53,7 @@ export const fetchData = (valueNum=3) => {
             })
     }
 }
-export const addUser = (valueNum=1) => {
-    return function(dispatch){
-        dispatch(request())
-        fetch(`https://randomuser.me/api/?results=${valueNum}`)
-            .then(response => response.json())
-            .then(data => {
-                dispatch(add(data.results[0]))
-            })
-            .catch(error => {
-                dispatch(failed())
-            })
-    }
-}
+
 
 export default function reducer(state = initialState, action){
     switch(action.type){
