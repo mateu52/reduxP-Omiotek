@@ -7,11 +7,11 @@ import thunk from 'redux-thunk'
 import CounterContainer from "./counter/CounterContainer";
 import Posts from "./posts/conteiners/Posts";
 import Users from "./users/containers/Users";
+import Items from "./items/components/items";
 //import reducer from "./counter/redux";
 import rootReducer from "./rootReducers";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
-
 export default class App extends React.Component {
   
   render() {
@@ -19,8 +19,7 @@ export default class App extends React.Component {
       <div className="App">
         <Provider store={store}>
           <CounterContainer />
-          <Posts />
-          <Users />
+          <Items />
         </Provider>
       </div>
     );
