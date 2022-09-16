@@ -20,9 +20,9 @@ export default class App extends React.Component {
       <div className="App">
         <Provider store={store}>
           <Router>
-              <Link to="/">Counter</Link>
-              <Link to="/Items">Items</Link>
-              <Link to="/refresh">Refresh button</Link>
+              <p><Link to="/">Counter</Link></p>
+              <p><Link to="/Items">Items</Link></p>
+              <p><Link to="/refresh">Refresh button</Link></p>
             <Routes>
               <Route path="/" element={<CounterContainer />} />
               <Route path="/Items" element={<Items />} />

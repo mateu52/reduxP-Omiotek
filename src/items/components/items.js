@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect, connnect } from 'react-redux';
 import { getUsers, selectUsers, addUser } from '../reducer';
 import ItemsLists from './ItemsLists';
 
-function Items({ numValue, addData, addUSR }){
+function Items({ numValue, addData, addUSR, actual }){
     console.log(numValue)
-
+    useEffect(() => {
+        if(actual.length === 0)
+            return addData()
+    
+        
+    },[])
     return(
         <div className="container">
             <h4>open list</h4>
@@ -19,7 +24,8 @@ function Items({ numValue, addData, addUSR }){
 
 function mapStateToProps(state){
     return{
-        numValue: selectUsers(state)
+        numValue: selectUsers(state),
+        actual: state.numValue.x
     };
 }
 function mapDispatchToProps(dispatch){
