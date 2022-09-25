@@ -26,7 +26,7 @@ export const fetchPosts = () => {
   };
 };
 
-export default (state = INITIAL_STATE, action) => {
+export default function reducer(state = INITIAL_STATE, action){
   switch (action.type) {
     case FETCH_POSTS_REQUESTED:
       return {

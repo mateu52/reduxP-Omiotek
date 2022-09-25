@@ -1,4 +1,4 @@
-
+import { add_Info, add_Warning } from "../Message/redux";
 
 
 const REQ = 'REQ';
@@ -23,6 +23,7 @@ export const fetchUsers = (userCount = 10) => {
 }
 export const getUsers = () => (dispatch) => {
     dispatch(request());
+    dispatch(add_Info());
     fetchUsers()
         .then((data) => {
             dispatch(succed(data.results))
@@ -33,6 +34,7 @@ export const getUsers = () => (dispatch) => {
 }
 export const addUser = () => (dispatch) => {
     dispatch(request());
+    dispatch(add_Warning())
     fetchUsers(1)
         .then((data) => {
             dispatch(add(data.results[0]))
@@ -44,6 +46,7 @@ export const addUser = () => (dispatch) => {
 export const fetchData = (valueNum=3) => {
     return function(dispatch){
         dispatch(request())
+        // dispatch(info())
         fetch(`https://randomuser.me/api/?results=${valueNum}`)
             .then(response => response.json())
             .then(data => {

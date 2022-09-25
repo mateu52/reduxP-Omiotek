@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import { connect, connnect } from 'react-redux';
+import { connect } from 'react-redux';
+//import { add_Info } from '../../Message/redux'; 
 import { getUsers, selectUsers, addUser } from '../reducer';
 import ItemsLists from './ItemsLists';
+import Message from '../../Message/Message';
 
 function Items({ numValue, addData, addUSR, actual }){
     console.log(numValue)
@@ -18,6 +20,7 @@ function Items({ numValue, addData, addUSR, actual }){
             <button onClick={() => addUSR()}>add 1</button>
             
             <ItemsLists items={numValue} /> 
+            <Message />
         </div>
     )
 }
@@ -32,6 +35,7 @@ function mapDispatchToProps(dispatch){
     return{
         addData: () => dispatch(getUsers()),
         addUSR: () => dispatch(addUser()),
+        
     };
 }
 
