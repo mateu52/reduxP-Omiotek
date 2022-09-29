@@ -5,13 +5,13 @@ import { getUsers, selectUsers, addUser } from '../reducer';
 import ItemsLists from './ItemsLists';
 import Message from '../../Message/Message';
 
+
 function Items({ numValue, addData, addUSR, actual }){
     console.log(numValue)
     useEffect(() => {
         if(actual.length === 0)
             return addData()
     
-        
     },[])
     return(
         <div className="container">
@@ -20,6 +20,7 @@ function Items({ numValue, addData, addUSR, actual }){
             <button onClick={() => addUSR()}>add 1</button>
             
             <ItemsLists items={numValue} /> 
+            
             <Message />
         </div>
     )

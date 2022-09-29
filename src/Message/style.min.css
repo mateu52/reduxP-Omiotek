@@ -1,0 +1,1 @@
+body{box-sizing:border-box}.table{background-color:#cfcfcf;width:300px;position:absolute;right:0;bottom:0}.info .warning .danger{background-color:beige;padding:5px;height:100px;display:flex;justify-content:center;align-content:flex-end}.info{color:blue}.warning{color:brown}.danger{color:black}.close_btn :hover{display:none}
