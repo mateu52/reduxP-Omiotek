@@ -11,7 +11,7 @@ function Message({ info, warning, danger, closeMSG }){
         
         setTimeout(() => {
             closeMSG()
-        }, 4000);
+        }, 8000);
     })
     const handleClick = () => {
         
