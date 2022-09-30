@@ -3,6 +3,7 @@ const INFO = 'INFO';
 const WARNING = 'WARNING';
 const DANGER = 'DANGER';
 const TOZERO = 'TOZERO';
+const MESSAGE = 'MESSAGE';
 
 export const info = () => ({
     type: INFO, payload: 'pobrano z API'
@@ -16,6 +17,9 @@ export const danger = () => ({
 export const zero_msg = payload => ({
     type: TOZERO, payload
 })
+export const message = payload => ({
+    type: MESSAGE, payload
+})
 export function close_btn(){
     return (    
             <div>
@@ -28,7 +32,8 @@ const initialState = {
     info: '',
     message: '',
     warning: '',
-    danger: ''
+    danger: '',
+    message: ''
 }
 
 export default function reducer(state = initialState, action){
@@ -41,6 +46,8 @@ export default function reducer(state = initialState, action){
             return {...state, danger: action.payload}
         case TOZERO:
             return {...state, danger: '', warning:'', info:''}
+        case MESSAGE:
+            return {...state, message: action.payload}
         default:
             return state;
     }
@@ -64,5 +71,10 @@ export const add_Danger = () => {
 export const resetState = () => {
     return function(dispatch){
         dispatch(zero_msg())
+    }
+}
+export const form_message = () => {
+    return function(dispatch){
+        dispatch(message({message: "hello"}))
     }
 }
