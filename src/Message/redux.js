@@ -32,8 +32,7 @@ const initialState = {
     info: '',
     message: '',
     warning: '',
-    danger: '',
-    message: ''
+    danger: ''
 }
 
 export default function reducer(state = initialState, action){
@@ -73,8 +72,8 @@ export const resetState = () => {
         dispatch(zero_msg())
     }
 }
-export const form_message = () => {
-    return function(dispatch){
-        dispatch(message({message: "hello"}))
-    }
-}
+// export const form_message = () => {
+//     return function(dispatch){
+//         dispatch(message({message: "hello"}))
+//     }
+// }
