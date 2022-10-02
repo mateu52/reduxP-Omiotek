@@ -30,7 +30,3 @@ body {
 .danger {
   color: black;
 }
-
-.close_btn :hover {
-  display: none;
-}

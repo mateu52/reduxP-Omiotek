@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { add_Info, zero_msg, close_btn, form_message} from './redux';
 import styles from'./style.css';
 //do wyświetlania state.info
-function Message({ message, info, warning, danger, closeMSG }){
+function Message({ info, warning, danger, closeMSG }){
     // const hInfo = () => {
     //useEffect - po 5 sekundach uruchomic akcje wyswietlającą tylko stan i zerująca komunikaty
     // }
@@ -16,8 +16,12 @@ function Message({ message, info, warning, danger, closeMSG }){
     const handleClick = () => {
         
         
-        return   <button className='close_btn'>X</button>
-        
+        return   <div>
+                    <button onClick={() => closeMSG()}>X</button>
+                    <p className='info'>{info}</p>
+                    <p className='warning'>{ warning }</p>
+                    <p className='danger'>{ danger }</p>
+                </div>
         
     }
     return(
@@ -29,10 +33,7 @@ function Message({ message, info, warning, danger, closeMSG }){
                 
             {/* <button onClick={closeMSG()}>x</button> */}
                 {form_message()}
-                <p>{message}sd</p>
-                <p className='info'>{info}</p>
-                <p className='warning'>{ warning }</p>
-                <p className='danger'>{ danger }</p>
+                
         </div>
     )
 }
@@ -41,8 +42,7 @@ function mapStateToProps(state){
     return{
         info: state.message.info,
         warning: state.message.warning,
-        danger: state.message.danger,
-        message: state.message.message
+        danger: state.message.danger
     };
 }
 
