@@ -24,7 +24,6 @@ function Contact(){
 //////////////////////////////////////////////
 fetch(process.env.REACT_APP_CONTACT_FORM_URL, options)
 }
-console.log(process.env.REACT_APP_CONTACT_FORM_URL)
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <input {...register('firstname')} placeholder="first name" />
