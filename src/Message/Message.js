@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { zero_msg } from './redux';
 import styles from'./style.css';
 //do wyświetlania state.info
-function Message({ info, warning, danger, closeMSG }){
+function Message({ info, warning, danger, closeMSG, form_form, form_error }){
     useEffect(() => {
         
         setTimeout(() => {
@@ -18,6 +18,8 @@ function Message({ info, warning, danger, closeMSG }){
                     <p className='info'>{info}</p>
                     <p className='warning'>{ warning }</p>
                     <p className='danger'>{ danger }</p>
+                    <p className='info'>{form_form}</p>
+                    <p className='danger'>{form_error}</p>
                 </div>
     }
     return(
@@ -33,7 +35,9 @@ function mapStateToProps(state){
     return{
         info: state.message.info,
         warning: state.message.warning,
-        danger: state.message.danger
+        danger: state.message.danger,
+        form_form: state.message.fetch_form,
+        form_error: state.message.form_error
     };
 }
 
