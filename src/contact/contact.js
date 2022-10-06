@@ -3,26 +3,31 @@ import { useForm } from "react-hook-form";
 function Contact(){
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        //require("dotenv-webpack");
-       
-//////////////////////////////////////////
-    const headers = new Headers()
-        headers.append("Content-Type", "application/json")
+        const headers = new Headers()
+            headers.append("Content-Type", "application/json")
 
-    const body = {
-        "test": "event12",
-        "name": data.firstname
-    }
-
-    const options = {
-        method: "POST",
-        headers,
-        mode: "cors",
-        body: JSON.stringify(body),
-    }
-
-//////////////////////////////////////////////
-fetch(process.env.REACT_APP_CONTACT_FORM_URL, options)
+        const body = {
+            //"test": "event12",
+            "name": data.firstname,
+            "surname": data.secondname
+        }
+        const options = {
+            method: "POST",
+            Authorization: `Bearer ${process.env.REACT_APP_CONTACT_FORM_KEY}`,
+            headers,
+            mode: "cors",
+            body: JSON.stringify(body),
+        }
+    fetch(process.env.REACT_APP_CONTACT_FORM_URL, options)
+        .then((res) => {
+            if (res.ok) {
+                console.log('ok');
+            } else {
+                console.log("error");
+            }
+        })
+        
+    
 }
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
