@@ -8,7 +8,7 @@ function Message({ info, warning, danger, closeMSG, form_form, form_error }){
         
         setTimeout(() => {
             closeMSG()
-        }, 8000);
+        }, 10000);
     })
     const handleClick = () => {
         

@@ -39,10 +39,10 @@ export function close_btn(){
 
 const initialState = {
     info: '',
-    message: 'asd',
+    message: '',
     warning: '',
     danger: '',
-    fetch_form: 'sdfsdf',
+    fetch_form: '',
     form_error: ''
 }
 
@@ -91,6 +91,12 @@ export const resetState = () => {
 export const formState = () => {
     return function(dispatch){
         dispatch(form_msg())
+        {console.log("hello")}
+    }
+}
+export const formStateFail = () => {
+    return function(dispatch){
+        dispatch(fetch_error())
         {console.log("hello")}
     }
 }

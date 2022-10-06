@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
-import { formState } from "../Message/redux"
+import { formState, formStateFail } from "../Message/redux"
 import Message from "../Message/Message";
-function Contact({ form_info }){
+function Contact({ form_info, form_error }){
     const { register, handleSubmit } = useForm();
     const MessageState = () => { <Message /> }
     const onSubmit = data => {
@@ -28,9 +28,11 @@ function Contact({ form_info }){
                 form_info()
                 MessageState()
             } else {
+                form_error()
                 console.log("error");
             }
         })
+        {<Message />}
 }
 MessageState();
     return (
@@ -39,15 +41,14 @@ MessageState();
             <input {...register("secondname")} placeholder="second name" />
 
             <input type="submit" />
-            <Message />
-        </form>
-        
+            
+        </form>   
     )
-
 }
 function mapDispatchToProps(dispatch){
     return{
-        form_info: () => dispatch(formState())
+        form_info: () => dispatch(formState()),
+        form_error: () => dispatch(formStateFail())
     }
 }
 
