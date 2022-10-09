@@ -10,8 +10,6 @@ function Itemsfetch( { getList, resetList, msgDanger } ){
             msgDanger()
         )
     }
-
-
     return(
         <div>
             <button onClick={() => getList()}>Odśwież</button>
@@ -20,12 +18,9 @@ function Itemsfetch( { getList, resetList, msgDanger } ){
         </div>
     )
 }
-
-
 const mapDispatchToProps = dispatch => ({
     getList: () => dispatch(getUsers()),
     resetList: () => dispatch(reset()),
     msgDanger: () => dispatch(add_Danger())
 })
-
 export default connect(null,mapDispatchToProps)(Itemsfetch);

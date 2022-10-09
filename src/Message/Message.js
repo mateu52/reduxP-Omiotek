@@ -11,8 +11,6 @@ function Message({ info, warning, danger, closeMSG, form_form, form_error }){
         }, 10000);
     })
     const handleClick = () => {
-        
-        
         return   <div>
                     <button onClick={() => closeMSG()}>X</button>
                     <p className='info'>{info}</p>
@@ -40,7 +38,6 @@ function mapStateToProps(state){
         form_error: state.message.form_error
     };
 }
-
 function mapDispatchToProps(dispatch){
     return{
         closeMSG: () => dispatch(zero_msg())

@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-//import { add_Info } from '../../Message/redux'; 
 import { getUsers, selectUsers, addUser } from '../reducer';
 import ItemsLists from './ItemsLists';
 import Message from '../../Message/Message';
-
 
 function Items({ numValue, addData, addUSR, actual }){
     console.log(numValue)
     useEffect(() => {
         if(actual.length === 0)
             return addData()
-    
     },[])
     return(
         <div className="container">
@@ -25,7 +22,6 @@ function Items({ numValue, addData, addUSR, actual }){
         </div>
     )
 }
-
 function mapStateToProps(state){
     return{
         numValue: selectUsers(state),
@@ -39,5 +35,4 @@ function mapDispatchToProps(dispatch){
         
     };
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(Items);

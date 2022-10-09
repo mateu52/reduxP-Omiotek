@@ -12,5 +12,4 @@ function ItemsLists({items}){
         </div>
     )
 }
-
 export default ItemsLists;

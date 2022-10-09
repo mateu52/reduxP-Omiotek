@@ -4,14 +4,12 @@ import { connect } from "react-redux";
 import { formState, formStateFail } from "../Message/redux"
 import Message from "../Message/Message";
 function Contact({ form_info, form_error }){
-    const { register, handleSubmit } = useForm();
-    const MessageState = () => { <Message /> }
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         const headers = new Headers()
             headers.append("Content-Type", "application/json")
 
         const body = {
-            //"test": "event12",
             "name": data.firstname,
             "surname": data.secondname
         }
@@ -26,22 +24,20 @@ function Contact({ form_info, form_error }){
         .then((res) => {
             if (res.ok) {
                 form_info()
-                MessageState()
             } else {
                 form_error()
                 console.log("error");
             }
         })
-        {<Message />}
 }
-MessageState();
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <input {...register('firstname')} placeholder="first name" />
+            <input {...register('firstname' , { required: true})} placeholder="first name" />
+            {errors.firstname?.type === 'required' && <p role="alert">First name is required{form_error()}</p>}
             <input {...register("secondname")} placeholder="second name" />
 
             <input type="submit" />
-            
+            <Message />
         </form>   
     )
 }

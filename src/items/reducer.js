@@ -1,12 +1,10 @@
 import { add_Info, add_Warning } from "../Message/redux";
 
-
 const REQ = 'REQ';
 const SUC = 'SUC';
 const FAIL = 'FAIL';
 const ADD = 'ADD';
 const RESET = 'RESET';
-
 
 export const request = () => ({ type: REQ })
 export const succed = data => ({ type: SUC, payload: data })
@@ -57,8 +55,6 @@ export const fetchData = (valueNum=3) => {
             })
     }
 }
-
-
 export default function reducer(state = initialState, action){
     switch(action.type){
         case REQ:

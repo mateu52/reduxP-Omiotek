@@ -97,11 +97,8 @@ export const formState = () => {
 export const formStateFail = () => {
     return function(dispatch){
         dispatch(fetch_error())
+        dispatch(warning())
         {console.log("hello")}
     }
 }
-// export const form_message = () => {
-//     return function(dispatch){
-//         dispatch(message({message: "hello"}))
-//     }
-// }
+
